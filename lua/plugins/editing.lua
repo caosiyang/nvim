@@ -1,3 +1,4 @@
+-- Editing enhancements
 return {
 	{
 		"echasnovski/mini.pairs",
@@ -24,6 +25,8 @@ return {
 		event = "VeryLazy",
 		opts = {},
 	},
+
+	-- TODO highlighter
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "folke/trouble.nvim" },
@@ -54,6 +57,8 @@ return {
 			{ "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
 		},
 	},
+
+	-- Indent highlighter
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		enabled = false,

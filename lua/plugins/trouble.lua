@@ -1,3 +1,4 @@
+-- Diagnostics list
 return {
 	{
 		"folke/trouble.nvim",

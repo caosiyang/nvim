@@ -1,3 +1,4 @@
+-- Colorscheme
 return {
 	{
 		"EdenEast/nightfox.nvim",
@@ -6,6 +7,7 @@ return {
 		opts = { style = "nightfox" },
 		config = function(_, opts)
 			require("nightfox").setup(opts)
+			-- available themes: nightfox, dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox
 			vim.cmd.colorscheme("nightfox")
 		end,
 	},
