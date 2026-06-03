@@ -22,7 +22,7 @@ return {
 				pattern = {
 					"python",
 					"lua",
-				"bash",
+					"bash",
 					"json",
 					"markdown",
 					"yaml",

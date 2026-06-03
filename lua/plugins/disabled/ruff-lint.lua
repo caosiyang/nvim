@@ -1,0 +1,16 @@
+-- ========================================
+-- 被 ruff LSP 替代的旧 lint 配置（nvim-lint + ruff）
+-- python 诊断已由 ruff LSP 承担（支持快速修复、实时诊断）
+-- 恢复方法：将以下配置加回 lint.lua
+-- ========================================
+-- mason-nvim-lint ensure_installed:
+-- {
+-- 	"ruff",
+-- 	"selene",
+-- }
+--
+-- nvim-lint linters_by_ft:
+-- {
+-- 	python = { "ruff" },
+-- 	lua = { "selene" },
+-- }

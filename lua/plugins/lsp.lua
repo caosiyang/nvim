@@ -9,6 +9,7 @@ return {
 			ensure_installed = {
 				-- python
 				"pyright",
+				"ruff",
 				-- lua
 				"lua_ls",
 				"stylua",
