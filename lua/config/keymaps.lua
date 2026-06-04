@@ -28,6 +28,16 @@
 -- 	require("todo-comments").jump_prev()
 -- end, { desc = "Previous todo comment" })
 
+vim.keymap.set("n", "<leader>m", function()
+	if vim.o.mouse == "" then
+		vim.o.mouse = "a"
+		vim.notify("Mouse: enabled", vim.log.levels.INFO)
+	else
+		vim.o.mouse = ""
+		vim.notify("Mouse: disabled", vim.log.levels.INFO)
+	end
+end, { desc = "Toggle mouse", noremap = true, silent = true })
+
 -- You can also specify a list of valid jump keywords
 -- vim.keymap.set("n", "]t", function()
 --   require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})

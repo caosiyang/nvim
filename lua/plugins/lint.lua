@@ -1,22 +1,10 @@
 -- Code linter (for languages without LSP linter)
 return {
 	{
-		"rshkarin/mason-nvim-lint",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"mfussenegger/nvim-lint",
-		},
-		opts = {
-			ensure_installed = {
-				"selene",
-			},
-			automatic_installation = true,
-		},
-	},
-
-	{
 		"mfussenegger/nvim-lint",
-		dependencies = {},
+		dependencies = {
+			"mason-org/mason.nvim",
+		},
 		opts = {
 			linters_by_ft = {
 				lua = { "selene" },
