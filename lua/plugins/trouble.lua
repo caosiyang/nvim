@@ -2,18 +2,27 @@
 return {
 	{
 		"folke/trouble.nvim",
-		opts = {},
+		opts = {
+			keys = {
+				["<cr>"] = "jump_close",
+			},
+		},
 		cmd = "Trouble",
 		keys = {
 			{
-				"<leader>xx",
-				"<cmd>Trouble diagnostics toggle<cr>",
-				desc = "Diagnostics (Trouble)",
+				"<leader>D",
+				"<cmd>Trouble diagnostics toggle focus=true win.type=float<cr>",
+				desc = "Diagnostics (Float)",
 			},
 			{
-				"<leader>xX",
-				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
+				"<leader>d",
+				function()
+					vim.diagnostic.open_float(nil, {
+						focusable = false,
+						close_events = { "BufLeave", "InsertEnter", "CursorMoved" },
+					})
+				end,
+				desc = "Line Diagnostic",
 			},
 			{
 				"<leader>cs",

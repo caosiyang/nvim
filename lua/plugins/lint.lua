@@ -35,13 +35,6 @@ return {
 						)
 					end,
 				},
-
-				vim.keymap.set("n", "<leader>D", function()
-					vim.diagnostic.open_float(nil, {
-						focusable = false,
-						close_events = { "BufLeave", "InsertEnter", "CursorMoved" },
-					})
-				end, { desc = "show diagnostic information", noremap = true, silent = true }),
 			})
 		end,
 	},
