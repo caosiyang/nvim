@@ -6,6 +6,8 @@ return {
 			formatters_by_ft = {
 				python = { "ruff_organize_imports", "ruff_format" },
 				lua = { "stylua" },
+				sh = { "shfmt" },
+				bash = { "shfmt" },
 			},
 			format_on_save = false,
 		},

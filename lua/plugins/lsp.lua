@@ -10,6 +10,13 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		config = function()
+			-- bash-language-server: enable for sh/bash filetypes
+			vim.lsp.config("bashls", {
+				filetypes = { "sh", "bash" },
+			})
+			vim.lsp.enable("bashls")
+		end,
 		keys = {
 			{
 				"<leader>rn",

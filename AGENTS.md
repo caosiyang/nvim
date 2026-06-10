@@ -62,13 +62,15 @@ lua/
 |--------|------|
 | `<leader>F` | 格式化代码（conform） |
 | `<leader>L` | 手动 lint（nvim-lint） |
-| `<leader>D` | 弹出诊断信息 |
+| `<leader>D` | 诊断浮窗（Trouble，可聚焦，`<esc>`/`q` 关闭） |
+| `<leader>dd` | 当前行诊断浮窗（不可聚焦，光标移动自动消失） |
 | `<leader>m` | 切换鼠标 |
 | `<leader>T` | neo-tree 开关 |
 | `<leader>gg` / `gf` | lazygit / 当前文件 lazygit |
-| `<leader>do` / `dc` | diffview 打开 / 关闭 |
+| `<leader>do` / `dc` | diffview 打开 / 关闭（已注释，改用 `<leader>gd`） |
+| `<leader>gd` | diffview 开关（toggle） |
 | `<leader>ff/fg/fw/fs/fb/fh/fr/fd` | telescope |
-| `<leader>xx/xX/cs/cl/xL/xQ` | trouble |
+| `<leader>cs/cl/xL/xQ` | trouble（符号 / LSP 引用 / loclist / qflist） |
 | `<leader>xt/xT/st/sT` | todo-comments |
 | `<leader>rn` / `<F2>` | LSP 重命名 |
 | `gd` / `gr` / `K` | LSP 跳转定义 / 引用 / hover |

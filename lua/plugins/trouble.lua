@@ -5,6 +5,7 @@ return {
 		opts = {
 			keys = {
 				["<cr>"] = "jump_close",
+				["<esc>"] = "close",
 			},
 		},
 		cmd = "Trouble",
@@ -15,7 +16,7 @@ return {
 				desc = "Diagnostics (Float)",
 			},
 			{
-				"<leader>d",
+				"<leader>dd",
 				function()
 					vim.diagnostic.open_float(nil, {
 						focusable = false,

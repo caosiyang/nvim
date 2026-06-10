@@ -8,8 +8,21 @@ return {
 		"sindrets/diffview.nvim",
 		opts = {},
 		keys = {
-			{ "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "Git Diff Open (side-by-side)", mode = "n", noremap = true, silent = true, },
-			{ "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "Git Diff Close (side-by-side)", mode = "n", noremap = true, silent = true, },
+			{
+				"<leader>gd",
+				function()
+					local view = require("diffview.lib").get_current_view()
+					if view then
+						vim.cmd("DiffviewClose")
+					else
+						vim.cmd("DiffviewOpen")
+					end
+				end,
+				desc = "Git Diff Toggle (side-by-side)",
+				mode = "n",
+				noremap = true,
+				silent = true,
+			},
 		},
 	},
 	{
@@ -26,7 +39,13 @@ return {
 		},
 		keys = {
 			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit", noremap = true, silent = true },
-			{ "<leader>gf", "<cmd>LazyGitCurrentFile<cr>", desc = "LazyGit (current file)", noremap = true, silent = true },
+			{
+				"<leader>gf",
+				"<cmd>LazyGitCurrentFile<cr>",
+				desc = "LazyGit (current file)",
+				noremap = true,
+				silent = true,
+			},
 		},
 	},
 }
