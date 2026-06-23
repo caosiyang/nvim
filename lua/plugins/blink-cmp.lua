@@ -7,6 +7,10 @@ return {
 		"rafamadriz/friendly-snippets",
 	},
 	build = function()
+		-- Clear stale module cache: blink captures git_commit at require time,
+		-- so an outdated package.loaded makes library_available() report true
+		-- for the OLD commit and silently skip the build after an update.
+		package.loaded["blink.cmp"] = nil
 		-- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
 		-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
 		require("blink.cmp").build():pwait()

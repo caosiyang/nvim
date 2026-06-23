@@ -87,6 +87,7 @@ lua/
 ## 常见坑点
 
 - **headless 模式下 mason 安装会中断。** 执行 `nvim --headless "+Lazy! sync" +qa` 会中途杀掉 mason 安装（如 ruff）。首次安装务必交互式启动 nvim，或用 `:Mason` 和 `:MasonLog` 验证。
+- **blink.cmp 的 build hook 必须先清 `package.loaded["blink.cmp"]`。** 2.x（main 分支）从源码构建 fuzzy matcher，产物为 `lib/libblink_cmp_fuzzy.so.<git短hash>`（cargo 编译后被 `blink.lib` 的 `native.mv` 从 `target/release/` 移到此处）。`require("blink.cmp")` 时会把当时的 git commit 缓存到 `native` 对象；`:Lazy` 里按 `U` 更新后 commit 变了，但 `package.loaded` 仍是旧模块，`library_available()` 拿旧 hash 查到旧 `.so` 就直接跳过 build，新 commit 的 `.so` 始终不生成。重启 nvim 时以新 commit 加载，查不到对应 `.so` 就报错（`fuzzy.implementation = "rust"` 时直接 `error()`），必须手动 `:Lazy build blink.cmp`（此时缓存恰好已是新 commit）才恢复。`lua/plugins/blink-cmp.lua` 的 build 先 `package.loaded["blink.cmp"] = nil` 再 `require("blink.cmp").build():pwait()`，强制按当前 commit 重新校验并同步构建。需要 Rust 工具链（`cargo`/`rustc`）。
 - **conform 调用 `ruff` 命令行工具，不是 ruff LSP server。** mason 会同时安装两者，但若 `:Lazy sync` 中断，命令行可能缺失。解决：交互式启动 nvim 让 mason-tool-installer 跑完，或手动 `pip install ruff`。
 - **ruff LSP 与 nvim-lint 的 ruff 是故意去重的。** Python 诊断完全由 ruff LSP 承担（实时 + 快速修复）。nvim-lint 只处理 lua 的 selene。在 `lint.lua` 中重新启用 ruff 会出现重复诊断。
 - **原 `lsp.lua` 的 `<leader>e` 已删除**，因为和 `<leader>D` 重复。不要在不删除一个的情况下加回。
